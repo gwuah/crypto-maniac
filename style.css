@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-weight:400;
+}
+
+.increase {
+    color: green;
+}
+
+.decrease {
+    color: red;
+}
+
+.normal {
+    color: orange;
+}
+
+body {
+    height: 100vh;
+    background-color: black;
+    color: white;
+    box-sizing: border-box;
+    font-family: 'Montserrat', 'HelvticaNeue', 'Arial', sans-serif;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    z-index: 55;
+}
+
+#logo {
+    width: 80px;
+    position: relative;
+    top: 20px;
+}
+
+.container {
+    position: relative;
+    font-family: "Roboto";
+    width: 100%;
+    height: 200px;
+    margin-top: 40px;
+    box-sizing: border-box;
+    z-index: 55;
+}
+
+.c-child {
+    color: white;
+    width: 33.2%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+/*    border: 2px solid white;*/
+}
+
+h5 {
+    font-family: "Kreon";
+    font-size: 17px;
+    margin: 3px;
+    font-weight: 100;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    font-family: "Coustard";
+    z-index: 44;
+}
+
+footer a  {
+    color: #fc3;
+    font-size: 19px;
+}
+
+footer #appName {
+    font-family: "Barlow Condensed";
+    font-size: 19px;
+    letter-spacing: 2px;
+}
+
+#extras {
+    position: absolute;
+    font-family: "PT Sans";
+    border: 3px solid white;
+    padding: 15px;
+    right: 14px;
+    top: 25px;
+    border-radius: 5px;
+    z-index:4;
+}
+
+#extras a  {
+    color: #fc3;
+    font-size: 14px;
+    font-family: "Coustard";
+}
+
+/* unsplash bs */
+
+.bg__image,.bg__overlay{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0
+}
+
+.bg__image{
+	z-index:1;
+	background-size:cover;
+	background-position:center;
+	background-repeat:no-repeat
+}
+
+.bg__overlay{
+	z-index:2;
+	background:rgba(0,0,0,0.8)
+}
+
+.unsplash{
+	position:absolute;
+	bottom:30px;
+	left:40px;
+	z-index:9999;
+	height:32px;
+	line-height:32px;
+	display:flex
+}
+
+.unsplash__author__image{
+    width:32px;
+    height:32px;
+    border-radius:999px;
+    float:left;
+    margin-right:10px;
+    box-shadow:0 4px 6px rgba(0,0,0,0.1)
+}
+
+.anchor{
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:400;
+    border-bottom:1px solid rgba(255,255,255,0.5)
+}
+
+

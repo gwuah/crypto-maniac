@@ -1,0 +1,54 @@
+<!--
+            <div id="btc-gold" class="c-child">
+                <h2 class="price-display">BTC - <span id="user-currency">USD</span> <span class="price" id="PRICE_BTC"></span></h2>
+                <h5>24h Change: <span id="CHANGE24HOUR_BTC"></span><span id="CHANGE24HOURPCT_BTC"></span><br></h5>
+                <h5>Last Trade Volume: <span id="LASTVOLUME_BTC"></span><br></h5>
+                <h5>Last Trade Volume To: <span id="LASTVOLUMETO_BTC"></span><br></h5>
+                <h5>24h Volume: <span id="VOLUME24HOUR_BTC"></span><br></h5>
+                <h5>24h VolumeTo: <span id="VOLUME24HOURTO_BTC"></span><br></h5>
+            </div>
+            <div id="dash" class="c-child">
+                <h2 class="price-display">BTC - <span id="user-currency">USD</span> <span class="price" id="PRICE_BTC"></span></h2>
+                <h5>24h Change: <span id="CHANGE24HOUR_BTC"></span><span id="CHANGE24HOURPCT_BTC"></span><br></h5>
+                <h5>Last Trade Volume: <span id="LASTVOLUME_BTC"></span><br></h5>
+                <h5>Last Trade Volume To: <span id="LASTVOLUMETO_BTC"></span><br></h5>
+                <h5>24h Volume: <span id="VOLUME24HOUR_BTC"></span><br></h5>
+                <h5>24h VolumeTo: <span id="VOLUME24HOURTO_BTC"></span><br></h5>
+            </div>
+            <div id="iota" class="c-child">
+                <h2 class="price-display">BTC - <span id="user-currency">USD</span> <span class="price" id="PRICE_BTC"></span></h2>
+                <h5>24h Change: <span id="CHANGE24HOUR_BTC"></span><span id="CHANGE24HOURPCT_BTC"></span><br></h5>
+                <h5>Last Trade Volume: <span id="LASTVOLUME_BTC"></span><br></h5>
+                <h5>Last Trade Volume To: <span id="LASTVOLUMETO_BTC"></span><br></h5>
+                <h5>24h Volume: <span id="VOLUME24HOUR_BTC"></span><br></h5>
+                <h5>24h VolumeTo: <span id="VOLUME24HOURTO_BTC"></span><br></h5>
+            </div>
+            <div id="nem" class="c-child">
+                <h2 class="price-display">BTC - <span id="user-currency">USD</span> <span class="price" id="PRICE_BTC"></span></h2>
+                <h5>24h Change: <span id="CHANGE24HOUR_BTC"></span><span id="CHANGE24HOURPCT_BTC"></span><br></h5>
+                <h5>Last Trade Volume: <span id="LASTVOLUME_BTC"></span><br></h5>
+                <h5>Last Trade Volume To: <span id="LASTVOLUMETO_BTC"></span><br></h5>
+                <h5>24h Volume: <span id="VOLUME24HOUR_BTC"></span><br></h5>
+                <h5>24h VolumeTo: <span id="VOLUME24HOURTO_BTC"></span><br></h5>
+            </div>
+-->
+
+        // console.log(old[pair])
+        if (old[pair].PRICE !== undefined) {
+            console.log(old[pair].PRICE, currentPrice[pair].PRICE)
+            if (old[pair].PRICE > currentPrice[pair].PRICE) {
+                $(`#PRICE_${from}`).removeClass("increase");
+                $(`#PRICE_${from}`).removeClass("normal");
+                $(`#PRICE_${from}`).addClass("decrease");
+            } else if (old[pair].PRICE < currentPrice[pair].PRICE) {
+                $(`#PRICE_${from}`).removeClass("decrease");
+                $(`#PRICE_${from}`).removeClass("normal");
+                $(`#PRICE_${from}`).addClass("increase");
+            } else if (old[pair].PRICE == currentPrice[pair].PRICE) {
+                
+                $(`#PRICE_${from}`).removeClass("decrease");
+                $(`#PRICE_${from}`).removeClass("increase");
+                $(`#PRICE_${from}`).addClass("normal");
+            }
+
+        }

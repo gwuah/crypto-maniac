@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Crypto | Maniac</title>
+	  <link href="./style.css" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Roboto|Coustard|PT+Sans|Barlow+Condensed|Kreon|Montserrat" rel="stylesheet">
+	</head>
+
+	<body>
+        
+        <div id="extras">
+            <p>Realtime data provided by <a href="https://cryptoCompare.com" target="_blank">CryptoCompare</a></p>
+            <p>Realtime currency conversion made possible by <a href="https://apilayer.net" target="_blank">Apilayer</a></p>
+        </div>
+
+		<header>
+			<img id="logo" src="./img/logo.png" alt="our-log">
+		</header>
+        
+        <div class="container">
+            <div id="bitcoin" class="c-child">
+                <h2 class="price-display">BTC - <span id="user-currency">USD</span> <span class="price" id="PRICE_BTC"></span></h2>
+                <h5>24h Change: <span id="CHANGE24HOUR_BTC"></span> ( <span id="CHANGE24HOURPCT_BTC"></span> ) <br></h5>
+                <h5>Last Trade Volume: <span id="LASTVOLUME_BTC"></span><br></h5>
+                <h5>Last Trade Volume To: <span id="LASTVOLUMETO_BTC"></span><br></h5>
+                <h5>24h Volume: <span id="VOLUME24HOUR_BTC"></span><br></h5>
+                <h5>24h VolumeTo: <span id="VOLUME24HOURTO_BTC"></span><br></h5>
+            </div>
+            <div id="litecoin" class="c-child">
+                <h2 class="price-display">LTC - <span id="user-currency">USD</span> <span class="price" id="PRICE_LTC"></span></h2>
+                <h5>24h Change: <span id="CHANGE24HOUR_LTC"></span> ( <span id="CHANGE24HOURPCT_LTC"></span> ) <br></h5>
+                <h5>Last Trade Volume: <span id="LASTVOLUME_LTC"></span><br></h5>
+                <h5>Last Trade Volume To: <span id="LASTVOLUMETO_LTC"></span><br></h5>
+                <h5>24h Volume: <span id="VOLUME24HOUR_LTC"></span><br></h5>
+                <h5>24h VolumeTo: <span id="VOLUME24HOURTO_LTC"></span><br></h5>
+            </div>
+            <div id="ethereum" class="c-child">
+                <h2 class="price-display">ETH - <span id="user-currency">USD</span> <span class="price" id="PRICE_ETH"></span></h2>
+                <h5>24h Change: <span id="CHANGE24HOUR_ETH"></span> ( <span id="CHANGE24HOURPCT_ETH"></span> ) <br></h5>
+                <h5>Last Trade Volume: <span id="LASTVOLUME_ETH"></span><br></h5>
+                <h5>Last Trade Volume To: <span id="LASTVOLUMETO_ETH"></span><br></h5>
+                <h5>24h Volume: <span id="VOLUME24HOUR_ETH"></span><br></h5>
+                <h5>24h VolumeTo: <span id="VOLUME24HOURTO_ETH"></span><br></h5>
+            </div>
+        </div>
+        <div class="container">
+            <div id="bcc" class="c-child">
+                <h2 class="price-display">BCC - <span id="user-currency">USD</span> <span class="price" id="PRICE_BCH"></span></h2>
+                <h5>24h Change: <span id="CHANGE24HOUR_BCH"></span> ( <span id="CHANGE24HOURPCT_BCH"></span> )<br></h5>
+                <h5>Last Trade Volume: <span id="LASTVOLUME_BCH"></span><br></h5>
+                <h5>Last Trade Volume To: <span id="LASTVOLUMETO_BCH"></span><br></h5>
+                <h5>24h Volume: <span id="VOLUME24HOUR_BCH"></span><br></h5>
+                <h5>24h VolumeTo: <span id="VOLUME24HOURTO_BCH"></span><br></h5>
+            </div>
+            <div id="ripple" class="c-child">
+                <h2 class="price-display">RIPPLE - <span id="user-currency">USD</span> <span class="price" id="PRICE_XRP"></span></h2>
+                <h5>24h Change: <span id="CHANGE24HOUR_XRP"></span> ( <span id="CHANGE24HOURPCT_XRP"></span> )<br></h5>
+                <h5>Last Trade Volume: <span id="LASTVOLUME_XRP"></span><br></h5>
+                <h5>Last Trade Volume To: <span id="LASTVOLUMETO_XRP"></span><br></h5>
+                <h5>24h Volume: <span id="VOLUME24HOUR_XRP"></span><br></h5>
+                <h5>24h VolumeTo: <span id="VOLUME24HOURTO_XRP"></span><br></h5>
+            </div>
+            <div id="cardano" class="c-child">
+                <h2 class="price-display">CAR - <span id="user-currency">USD</span> <span class="price" id="PRICE_ADA"></span></h2>
+                <h5>24h Change: <span id="CHANGE24HOUR_ADA"></span> ( <span id="CHANGE24HOURPCT_ADA"></span> )<br></h5>
+                <h5>Last Trade Volume: <span id="LASTVOLUME_ADA"></span><br></h5>
+                <h5>Last Trade Volume To: <span id="LASTVOLUMETO_ADA"></span><br></h5>
+                <h5>24h Volume: <span id="VOLUME24HOUR_ADA"></span><br></h5>
+                <h5>24h VolumeTo: <span id="VOLUME24HOURTO_ADA"></span><br></h5>
+            </div>
+        </div>
+		
+        <footer><span id="appName">CryptoManiac</span>  by <a href="https://twitter.com/gwuah_" target="_blank">Griffith Awuah</a></footer>
+
+        <div class="unsplash">
+            <div class="unsplash__author">
+                <img src="" alt="" class="unsplash__author__image">
+                <a class="unsplash__author__name anchor"></a>
+                <span class="color-white"> / </span>
+                <a href="https://unsplash.com/?utm_source=CRYPTOMANIAC&utm_medium=referral&utm_campaign=api-credit" class="anchor">Unsplash</a>
+            </div>
+        </div>
+        
+        <div class="bg__overlay"></div>
+        <div class="bg__image"></div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
+		<script type="text/javascript" src="./lib/storage.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./lib/ccc-streamer-utilities.js"></script>
+		<script type="text/javascript" src="./app.js"></script>
+
+	</body>
+
+</html>

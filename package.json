@@ -1,0 +1,26 @@
+{
+   "browser_action": {
+      "default_popup": "popup.html",
+      "default_title": "Crypto-King"
+   },
+
+   "background": {
+      "scripts": [ "scripts/background.js" ]
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "scripts/content-script.js" ],
+      "run_at": "document_end"
+   } ],
+   
+   "description": "A chrome extension that enables you to see the realtime price of the top 10 crypto coins!",
+   "icons": {
+      "128": "img/logo-128.png",
+      "16": "img/logo-16.png"
+   },
+   "manifest_version": 2,
+   "name": "Crypto-King",
+   "permissions": [ "activeTab", "tabs", "storage" ],
+   "short_name": "cryptoKing",
+   "version": "1.0.0"
+}

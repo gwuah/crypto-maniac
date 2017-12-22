@@ -1,0 +1,1 @@
+console.log("crypto-king background script up and running! :)")
