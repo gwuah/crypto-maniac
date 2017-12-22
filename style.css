@@ -21,7 +21,7 @@ body {
     background-color: black;
     color: white;
     box-sizing: border-box;
-    font-family: 'Montserrat', 'HelvticaNeue', 'Arial', sans-serif;
+    font-family: 'monospace';
 }
 
 header {
@@ -47,6 +47,16 @@ header {
     box-sizing: border-box;
     z-index: 55;
 }
+.coin-name {
+    color: #fc3
+}
+
+.crypto-logo {
+    width: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
 
 .c-child {
     color: white;
@@ -57,6 +67,12 @@ header {
     padding: 20px;
     box-sizing: border-box;
 /*    border: 2px solid white;*/
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: lighter;
+    font-family: monospace;
 }
 
 h5 {
@@ -91,18 +107,31 @@ footer #appName {
 #extras {
     position: absolute;
     font-family: "PT Sans";
-    border: 3px solid white;
+/*    border: 3px solid white;*/
     padding: 15px;
     right: 14px;
     top: 25px;
-    border-radius: 5px;
+/*    border-radius: 5px;*/
     z-index:4;
+    display: none;
 }
 
 #extras a  {
     color: #fc3;
     font-size: 14px;
     font-family: "Coustard";
+}
+
+.settings__section {
+    top: 10px;
+    left: 20px;
+    position: absolute;
+	z-index: 444;
+    display: none;
+}
+
+#credits {
+    display: none;
 }
 
 /* unsplash bs */

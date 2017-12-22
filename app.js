@@ -80,6 +80,9 @@ document.addEventListener("DOMContentLoaded", async function(event) {
 	};
 
 	checkForCachedImage = async () => {
+
+		// code by the guy who built cryptex
+
 	    // Elements
 	    $bgImage     = document.querySelector('.bg__image');
 	    $authorName  = document.querySelector('.unsplash__author__name');
@@ -133,5 +136,102 @@ document.addEventListener("DOMContentLoaded", async function(event) {
 	    }
 	  }
 
-	   await checkForCachedImage()
+	  let extraData = [...$("h5")];
+	  let changePer24 = extraData.filter((el, i) => { 
+	   	if (i % 5 == 0) return true;
+	  });
+
+	   const normal = (truthy) => {
+
+	   	const displayCP24 = (changePer24) => {
+	   		minimal(true)
+	   		for (const data of changePer24) { 
+	   			data.style.display = "block" 
+	   		}
+	   	}
+
+	   	const hideCP24 = (changePer24) => {
+	   		minimal(false)
+	   		for (const data of changePer24) { 
+	   			data.style.display = "none" 
+	   		}
+	   	}
+
+	   	// if its checked, display ; else hide
+	   	truthy ? displayCP24(changePer24) : hideCP24(changePer24) ;
+
+	  }
+
+	   const minimal = (truthy) => {
+
+	   	const displayAll = (extraData) => {
+	   		for (const data of extraData) { 
+	   			data.style.display = "block" 
+	   		}
+	   	}
+
+	   	const hideAll = (extraData) => {
+	   		for (const data of extraData) { 
+	   			data.style.display = "none" 
+	   		}
+	   	}
+
+	   	truthy ? hideAll(extraData) : displayAll(extraData);
+	  }
+
+	  const detailed = (truthy) => {
+	  	const displayAll = (extraData) => {
+	   		for (const data of extraData) { 
+	   			data.style.display = "block" 
+	   		}
+	   	}
+	   	truthy ? displayAll(extraData) : undefined;
+	  }
+
+	  // EVENT LISTENERS
+
+	  // toggleWrapper 
+	  const toggler = function(context) {
+	  	if ($(context).hasClass("active")) {
+	  		$(context).fadeOut(() => {
+	  			$(context).removeClass("active")
+	  		})
+	  	} else {
+	  		$(context).fadeIn(() => {
+	  			$(context).addClass("active")
+	  		})
+	  	}
+	  }
+
+	  // toggles the settings menu
+	  const tg_Settings = $("#tg-settings");
+	  tg_Settings.on("click", function(e) {
+	  	toggler($(".settings__section"))
+	  })
+
+	  // toggles the credit section
+	  const creditsBtn = $("#settings__credits");
+	  creditsBtn.on("click", function(e) {
+	  	toggler($("#credits"))
+	  })
+
+	  document.addEventListener("click", function(e) {
+	  	// console.log(e)
+	  	if (e.target.name == "settings" ) {
+	  		if (e.target.id == "minimal") {
+	  			minimal(e.target.checked)
+	  		} else if (e.target.id == "normal") {
+	  			normal(e.target.checked)
+	  		} else if (e.target.id == "detailed") {
+	  			// display every data
+	  			detailed(e.target.checked)
+	  		}
+	  	}
+	  })
+
+
+
+	   // await checkForCachedImage();
+
+
 	});
