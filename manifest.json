@@ -16,7 +16,7 @@
    "homepage_url": "https://kree.xyz",
    "icons": {
       "128": "img/co-logo.png",
-      "16": "img/logo-16.png"
+      "16": "img/img/favicon-16x16.png"
    },
    "manifest_version": 2,
    "name": "CryptoManiac", 
