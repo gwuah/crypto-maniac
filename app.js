@@ -1,5 +1,20 @@
 cg = 0;
 document.addEventListener("DOMContentLoaded", async function(event) {
+	// get a handle to the settings button
+	const tg_Settings = $("#tg-settings");
+
+	// display faculty
+	let extraData = [...$("h5")];
+	let changePer24 = extraData.filter((el, i) => (i % 5 == 0));
+
+	// get previous state set by previous child of cryptoManiac
+	var useUnsplashBackground = localStorage.getItem('use_unsplash');
+	var state = localStorage.getItem("state");
+
+	// timing faculty
+	const ONE_SECOND    = 1000 ;
+	const UPDATE_INTERVAL = 10 ;
+	const TWO_HOURS = (60 * 60 * 1000) * 2;
 
 	// connect to stream for realtime data
 	const currentPrice = {};
@@ -13,22 +28,38 @@ document.addEventListener("DOMContentLoaded", async function(event) {
 		"5~CCCAGG~ADA~BTC",
 	];
 
+	// temp storage object
+	let res = {};
 
-  let res = {} ;
+	// HELPER FUNCTIONS
+	const normal = () => {
+		// remove everything and then display our guys
+		// thats why we called minimal first
+ 		minimal()
+ 		for (const data of changePer24) { 
+ 			data.style.display = "block" ;
+ 		}
 
-	// request for specific data from server 
-	socket.emit('SubAdd', { subs: subscription });
-	socket.on("m", function(message) {
-		// console.log(message)
-		const messageType = message.substring(0, message.indexOf("~"));
-		if (messageType == CCC.STATIC.TYPE.CURRENTAGG) {
-			res = CCC.CURRENT.unpack(message);
-			
-			dataUnpack(res);
-		}
-	});
+	  localStorage.setItem("state", "normal")
+	}
 
-	// asssemble data object from recieved string
+	const minimal = () => {
+  	for (const data of extraData) { 
+  		data.style.display = "none" ; 
+  	}
+
+  	localStorage.setItem("state", "minimal")
+  }
+
+  const detailed = () => {
+  	for (const data of extraData) { 
+  		data.style.display = "block" 
+   	}
+
+   	localStorage.setItem("state", "detailed")
+  }
+
+  	// asssemble data object from recieved string
 	const dataUnpack = function(data) {
 		const from = data['FROMSYMBOL']
 		const to = data['TOSYMBOL']
@@ -63,175 +94,176 @@ document.addEventListener("DOMContentLoaded", async function(event) {
 		$(`#VOLUME24HOURTO_${from}`).text(CCC.convertValueToDisplay(tsym, data["VOLUME24HOURTO"]));
 	}
 
-	// unsplash
 
-	var useUnsplashBackground = localStorage.getItem('use_unsplash');
-	const ONE_SECOND    = 1000 ;
-	const UPDATE_INTERVAL = 10 ;
-	const TWO_HOURS = (60 * 60 * 1000) * 2;
+	const getRandomUnsplashPhoto = async () => {
+    const CLIENT_ID = '723bbb8a1193556cc9ea8798b2b4e6b9b401c177129bbe0319b48460f86fee4e';
+    const _unsplashURL = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}&query=nature`;
+    
+    const data = await fetch(_unsplashURL)
+    return await data.json()
+  };
 
+	const checkForCachedImage = async () => {
 
-	getRandomUnsplashPhoto = async () => {
-	    const CLIENT_ID = '723bbb8a1193556cc9ea8798b2b4e6b9b401c177129bbe0319b48460f86fee4e';
-	    const _unsplashURL = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}&query=nature`;
-	    
-	    const data = await fetch(_unsplashURL)
-	    return await data.json()
-	};
+	// code by the guy who built cryptex
 
-	checkForCachedImage = async () => {
+    // Elements
+    $bgImage     = document.querySelector('.bg__image');
+    $authorName  = document.querySelector('.unsplash__author__name');
+    $authorImage = document.querySelector('.unsplash__author__image');
 
-		// code by the guy who built cryptex
+    // Get the local storage object if it exists
+    var bgImage = localStorage.getItem('unsplash_data_obj');
+    var timeToExpire = parseFloat(localStorage.getItem('unsplash_data_time_expiry')) || 0
 
-	    // Elements
-	    $bgImage     = document.querySelector('.bg__image');
-	    $authorName  = document.querySelector('.unsplash__author__name');
-	    $authorImage = document.querySelector('.unsplash__author__image');
+    // UTM params for Unsplash
+    const UTMParams = '?utm_source=CRYPTOMANIAC&utm_medium=referral&utm_campaign=api-credit';
 
-	    // Get the local storage object if it exists
-	    var bgImage = localStorage.getItem('unsplash_data_obj');
-	    var timeToExpire = parseFloat(localStorage.getItem('unsplash_data_time_expiry')) || 0
+    var d = new Date(),
+        now = Date.now(),
+        addTwoHours = now + TWO_HOURS;
 
-	    // UTM params for Unsplash
-	    const UTMParams = '?utm_source=CRYPTOMANIAC&utm_medium=referral&utm_campaign=api-credit';
+    console.log(now, addTwoHours);
 
-	    var d = new Date(),
-	        now = Date.now(),
-	        addTwoHours = now + TWO_HOURS;
+    if (!bgImage || now > timeToExpire)   {
+        var data = await getRandomUnsplashPhoto()
 
-	    console.log(now, addTwoHours);
+        var backgroundImageUrl = data.urls.regular;
 
-	    if (!bgImage || now > timeToExpire)   {
-	        var data = await getRandomUnsplashPhoto()
+        console.log(data);
 
-	        var backgroundImageUrl = data.urls.regular;
+        $bgImage.style.backgroundImage = `url(${data.urls.regular})`;
+        $authorImage.setAttribute('src', data.user.profile_image.large);
+        $authorName.setAttribute('href', data.user.links.html + UTMParams);
+        $authorName.innerHTML = data.user.name;
 
-	        console.log(data);
-
-	        $bgImage.style.backgroundImage = `url(${data.urls.regular})`;
-	        $authorImage.setAttribute('src', data.user.profile_image.large);
-	        $authorName.setAttribute('href', data.user.links.html + UTMParams);
-	        $authorName.innerHTML = data.user.name;
-
-	        // Build an object to store in local storage
-	        var backgroundImageData = {
-	            user_name: data.user.name,
-	            user_profile_url: data.user.links.html,
-	            user_profile_image_url: data.user.profile_image.large,
-	            background_image: data.urls.regular
-	        };
+        // Build an object to store in local storage
+        var backgroundImageData = {
+            user_name: data.user.name,
+            user_profile_url: data.user.links.html,
+            user_profile_image_url: data.user.profile_image.large,
+            background_image: data.urls.regular
+        };
 
 
-	        // Set the stringified localStorage obj
-	        localStorage.setItem('unsplash_data_obj', JSON.stringify(backgroundImageData));
-	        localStorage.setItem('unsplash_data_time_expiry', addTwoHours);
-	        
-	    } else {
-	        var completeObj = JSON.parse(bgImage);
+        // Set the stringified localStorage obj
+        localStorage.setItem('unsplash_data_obj', JSON.stringify(backgroundImageData));
+        localStorage.setItem('unsplash_data_time_expiry', addTwoHours);
+        
+    } else {
+        var completeObj = JSON.parse(bgImage);
 
-	        $bgImage.style.backgroundImage = `url(${completeObj.background_image})`;
-	        $authorImage.setAttribute('src', completeObj.user_profile_image_url);
-	        $authorName.setAttribute('href', completeObj.user_profile_url + UTMParams);
-	        $authorName.innerHTML = completeObj.user_name;
-	    }
-	  }
+        $bgImage.style.backgroundImage = `url(${completeObj.background_image})`;
+        $authorImage.setAttribute('src', completeObj.user_profile_image_url);
+        $authorName.setAttribute('href', completeObj.user_profile_url + UTMParams);
+        $authorName.innerHTML = completeObj.user_name;
+    }
+  }
 
-	  let extraData = [...$("h5")];
-	  let changePer24 = extraData.filter((el, i) => { 
-	   	if (i % 5 == 0) return true;
-	  });
+  const toggler = function(context) {
+  	// check if it has the active class and hide or show based on it presence
+  	if ($(context).hasClass("active")) {
+  		$(context).fadeOut(() => {
+  			$(context).removeClass("active")
+  		})
+  	} else {
+  		$(context).fadeIn(() => {
+  			$(context).addClass("active")
+  		})
+  	}
+  }
 
-	   const normal = (truthy) => {
-
-	   	const displayCP24 = (changePer24) => {
-	   		minimal(true)
-	   		for (const data of changePer24) { 
-	   			data.style.display = "block" 
-	   		}
-	   	}
-
-	   	const hideCP24 = (changePer24) => {
-	   		minimal(false)
-	   		for (const data of changePer24) { 
-	   			data.style.display = "none" 
-	   		}
-	   	}
-
-	   	// if its checked, display ; else hide
-	   	truthy ? displayCP24(changePer24) : hideCP24(changePer24) ;
-
-	  }
-
-	   const minimal = (truthy) => {
-
-	   	const displayAll = (extraData) => {
-	   		for (const data of extraData) { 
-	   			data.style.display = "block" 
-	   		}
-	   	}
-
-	   	const hideAll = (extraData) => {
-	   		for (const data of extraData) { 
-	   			data.style.display = "none" 
-	   		}
-	   	}
-
-	   	truthy ? hideAll(extraData) : displayAll(extraData);
-	  }
-
-	  const detailed = (truthy) => {
-	  	const displayAll = (extraData) => {
-	   		for (const data of extraData) { 
-	   			data.style.display = "block" 
-	   		}
-	   	}
-	   	truthy ? displayAll(extraData) : undefined;
-	  }
-
-	  // EVENT LISTENERS
-
-	  // toggleWrapper 
-	  const toggler = function(context) {
-	  	if ($(context).hasClass("active")) {
-	  		$(context).fadeOut(() => {
-	  			$(context).removeClass("active")
-	  		})
-	  	} else {
-	  		$(context).fadeIn(() => {
-	  			$(context).addClass("active")
-	  		})
-	  	}
-	  }
-
-	  // toggles the settings menu
-	  const tg_Settings = $("#tg-settings");
-	  tg_Settings.on("click", function(e) {
-	  	toggler($(".settings__section"))
-	  })
-
-	  // toggles the credit section
-	  const creditsBtn = $("#settings__credits");
-	  creditsBtn.on("click", function(e) {
-	  	toggler($("#credits"))
-	  })
-
-	  document.addEventListener("click", function(e) {
-	  	// console.log(e)
-	  	if (e.target.name == "settings" ) {
-	  		if (e.target.id == "minimal") {
-	  			minimal(e.target.checked)
-	  		} else if (e.target.id == "normal") {
-	  			normal(e.target.checked)
-	  		} else if (e.target.id == "detailed") {
-	  			// display every data
-	  			detailed(e.target.checked)
-	  		}
-	  	}
-	  })
+  /* END OF HELPER FUNCTIONS */
 
 
+  // -- MAIN PROGRAM LOGIC --
 
-	   // await checkForCachedImage();
+	// update page based on previous user settings
+	if (useUnsplashBackground == null) {
+		// if there's no settings, set it to true and load image
+		// check ln. 250
+		$("input[name='use_unsplash']").click()
+		localStorage.setItem('use_unsplash', true)
+		minimal()
+		await checkForCachedImage()
+
+	} else if (useUnsplashBackground == "true") {
+		// automatically check the checkbox on a new page
+		$("input[name='use_unsplash']").click()
+		await checkForCachedImage()
+
+	} else if (useUnsplashBackground == "false") {
+		$(".bg__image").css("background", "black")
+	}
+
+	// update page based on previous user settings
+	if (state == (null || "minimal")) {
+		$("#minimal").click()
+		minimal()
+	} else if (state == "normal") {
+		$("#normal").click()
+		normal()
+	} else if (state == "detailed") {
+		$("#detailed").click()
+		detailed()
+	}
 
 
+	// request for specific data from server 
+	socket.emit('SubAdd', { subs: subscription });
+	socket.on("m", function(message) {
+		// console.log(message)
+		const messageType = message.substring(0, message.indexOf("~"));
+		if (messageType == CCC.STATIC.TYPE.CURRENTAGG) {
+			res = CCC.CURRENT.unpack(message);
+			
+			dataUnpack(res);
+		}
 	});
+
+
+  // toggles the settings menu
+  tg_Settings.on("click", function(e) {
+  	if ($(this).hasClass("fa-spin")) {
+  		$(this).removeClass("fa-spin")
+  	} else {
+  		$(this).addClass("fa-spin");
+  	}
+  	toggler($(".settings__section"))
+  })
+
+  // toggles the credit section
+  const creditsBtn = $("#settings__credits");
+  creditsBtn.on("click", function(e) {
+  	toggler($("#credits"))
+  })
+
+  document.addEventListener("click", async function(e) {
+  	// console.log(e)
+  	if (e.target.name == "settings" ) {
+  		if (e.target.id == "minimal") {
+  			minimal()
+  		} else if (e.target.id == "normal") {
+  			normal()
+  		} else if (e.target.id == "detailed") {
+  			detailed()
+  		}
+  	} else if (e.target.name == "use_unsplash") {
+  		console.log("i was clicked!")
+  		var checked = e.target.checked;
+  		
+  		// update settings in localStorage
+  		localStorage.setItem('use_unsplash', checked)
+
+  		if (checked) {
+  			// if user selects button, load image from unsplash
+  			await checkForCachedImage()
+  		} else {
+  			// remove background image from frontend
+  			$(".bg__image").css("background", "black")
+  		}
+  	}
+  })
+
+
+});

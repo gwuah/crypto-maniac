@@ -3,26 +3,25 @@
   <head>
   	<title>Crypto | Maniac</title>
 	  <link href="./style.css" rel="stylesheet">
-	  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Roboto|Coustard|PT+Sans|Barlow+Condensed|Kreon|Montserrat" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Roboto|Coustard|PT+Sans|Barlow+Condensed|Kreon|Montserrat" rel="stylesheet">
+      <script src="https://use.fontawesome.com/c04d348809.js"></script>
 	</head>
 
 	<body>
-        
-        <div id="extras">
-            <p>Realtime data provided by <a href="https://cryptoCompare.com" target="_blank">CryptoCompare</a></p>
-            <p>Realtime currency conversion made possible by <a href="https://apilayer.net" target="_blank">Apilayer</a></p>
-        </div>
 
 		<header>
 			<img id="logo" src="./img/logo.png" alt="our-log">
+            <a href="https://kree.xyz">
+                <img id="kre" src="https://avatars2.githubusercontent.com/u/21961793?s=100&v=10">
+            </a>
 		</header>
         
         <div class="container">
             <div id="bitcoin" class="c-child">
                 <img class="crypto-logo" src="https://www.cryptocompare.com/media/19633/btc.png">
                 
-                <h2 class="price-display"><span class="coin-name">BTC</span> - <span id="user-currency">USD</span> <span class="price" id="PRICE_BTC"></span></h2>
-                <h5>24h Change: <span id="CHANGE24HOUR_BTC"></span> ( <span id="CHANGE24HOURPCT_BTC"></span> ) <br></h5>
+                <h2 class="price-display"><span class="coin-name">BTC</span> - <span id="user-currency">$</span><span class="price" id="PRICE_BTC"></span></h2>
+                <h5><i class="fa fa-line-chart"></i> =  <span id="CHANGE24HOUR_BTC"></span> ( <span id="CHANGE24HOURPCT_BTC"></span> ) <br></h5>
                 <h5>Last Trade Volume: <span id="LASTVOLUME_BTC"></span><br></h5>
                 <h5>Last Trade Volume To: <span id="LASTVOLUMETO_BTC"></span><br></h5>
                 <h5>24h Volume: <span id="VOLUME24HOUR_BTC"></span><br></h5>
@@ -30,8 +29,8 @@
             </div>
             <div id="litecoin" class="c-child">
                 <img class="crypto-logo" src="https://www.cryptocompare.com/media/19782/litecoin-logo.png">
-                <h2 class="price-display"><span class="coin-name">LTC</span> - <span id="user-currency">USD</span> <span class="price" id="PRICE_LTC"></span></h2>
-                <h5>24h Change: <span id="CHANGE24HOUR_LTC"></span> ( <span id="CHANGE24HOURPCT_LTC"></span> ) <br></h5>
+                <h2 class="price-display"><span class="coin-name">LTC</span> - <span id="user-currency">$</span><span class="price" id="PRICE_LTC"></span></h2>
+                <h5><i class="fa fa-line-chart"></i> = <span id="CHANGE24HOUR_LTC"></span> ( <span id="CHANGE24HOURPCT_LTC"></span> ) <br></h5>
                 <h5>Last Trade Volume: <span id="LASTVOLUME_LTC"></span><br></h5>
                 <h5>Last Trade Volume To: <span id="LASTVOLUMETO_LTC"></span><br></h5>
                 <h5>24h Volume: <span id="VOLUME24HOUR_LTC"></span><br></h5>
@@ -39,8 +38,8 @@
             </div>
             <div id="ethereum" class="c-child">
                 <img class="crypto-logo" src="https://www.cryptocompare.com/media/20646/eth_logo.png">
-                <h2 class="price-display"><span class="coin-name">ETH</span> - <span id="user-currency">USD</span> <span class="price" id="PRICE_ETH"></span></h2>
-                <h5>24h Change: <span id="CHANGE24HOUR_ETH"></span> ( <span id="CHANGE24HOURPCT_ETH"></span> ) <br></h5>
+                <h2 class="price-display"><span class="coin-name">ETH</span> - <span id="user-currency">$</span><span class="price" id="PRICE_ETH"></span></h2>
+                <h5><i class="fa fa-line-chart"></i> = <span id="CHANGE24HOUR_ETH"></span> ( <span id="CHANGE24HOURPCT_ETH"></span> ) <br></h5>
                 <h5>Last Trade Volume: <span id="LASTVOLUME_ETH"></span><br></h5>
                 <h5>Last Trade Volume To: <span id="LASTVOLUMETO_ETH"></span><br></h5>
                 <h5>24h Volume: <span id="VOLUME24HOUR_ETH"></span><br></h5>
@@ -50,8 +49,8 @@
         <div class="container">
             <div id="bcc" class="c-child">
                 <img class="crypto-logo" src="https://www.cryptocompare.com/media/1383919/bch.jpg">
-                <h2 class="price-display"><span class="coin-name">BCC</span> - <span id="user-currency">USD</span> <span class="price" id="PRICE_BCH"></span></h2>
-                <h5>24h Change: <span id="CHANGE24HOUR_BCH"></span> ( <span id="CHANGE24HOURPCT_BCH"></span> )<br></h5>
+                <h2 class="price-display"><span class="coin-name">BCC</span> - <span id="user-currency">$</span><span class="price" id="PRICE_BCH"></span></h2>
+                <h5><i class="fa fa-line-chart"></i> =  <span id="CHANGE24HOUR_BCH"></span> ( <span id="CHANGE24HOURPCT_BCH"></span> )<br></h5>
                 <h5>Last Trade Volume: <span id="LASTVOLUME_BCH"></span><br></h5>
                 <h5>Last Trade Volume To: <span id="LASTVOLUMETO_BCH"></span><br></h5>
                 <h5>24h Volume: <span id="VOLUME24HOUR_BCH"></span><br></h5>
@@ -59,8 +58,8 @@
             </div>
             <div id="ripple" class="c-child">
                 <img class="crypto-logo" src="https://www.cryptocompare.com/media/19972/ripple.png">
-                <h2 class="price-display"><span class="coin-name">RIPPLE</span> - <span id="user-currency">USD</span> <span class="price" id="PRICE_XRP"></span></h2>
-                <h5>24h Change: <span id="CHANGE24HOUR_XRP"></span> ( <span id="CHANGE24HOURPCT_XRP"></span> )<br></h5>
+                <h2 class="price-display"><span class="coin-name">RIPPLE</span> - <span id="user-currency">$</span><span class="price" id="PRICE_XRP"></span></h2>
+                <h5><i class="fa fa-line-chart"></i> =  <span id="CHANGE24HOUR_XRP"></span> ( <span id="CHANGE24HOURPCT_XRP"></span> )<br></h5>
                 <h5>Last Trade Volume: <span id="LASTVOLUME_XRP"></span><br></h5>
                 <h5>Last Trade Volume To: <span id="LASTVOLUMETO_XRP"></span><br></h5>
                 <h5>24h Volume: <span id="VOLUME24HOUR_XRP"></span><br></h5>
@@ -68,8 +67,8 @@
             </div>
             <div id="cardano" class="c-child">
                 <img class="crypto-logo" src="https://www.cryptocompare.com/media/12318177/ada.png">
-                <h2 class="price-display"><span class="coin-name">CAR</span> - <span id="user-currency">USD</span> <span class="price" id="PRICE_ADA"></span></h2>
-                <h5>24h Change: <span id="CHANGE24HOUR_ADA"></span> ( <span id="CHANGE24HOURPCT_ADA"></span> )<br></h5>
+                <h2 class="price-display"><span class="coin-name">CAR</span> - <span id="user-currency">B</span><span class="price" id="PRICE_ADA"></span></h2>
+                <h5><i class="fa fa-line-chart"></i> = <span id="CHANGE24HOUR_ADA"></span> ( <span id="CHANGE24HOURPCT_ADA"></span> )<br></h5>
                 <h5>Last Trade Volume: <span id="LASTVOLUME_ADA"></span><br></h5>
                 <h5>Last Trade Volume To: <span id="LASTVOLUMETO_ADA"></span><br></h5>
                 <h5>24h Volume: <span id="VOLUME24HOUR_ADA"></span><br></h5>
@@ -77,22 +76,23 @@
             </div>
         </div>
 		
-        <footer><span id="appName">CryptoManiac</span> <button id="tg-settings">toggle settings</button></footer>
+        <footer><span id="appName">CryptoManiac -- &copy; 2017</span> <span id="tg-settings"><i class="fa fa-cogs"></i></span></footer>
         
         <div class="settings__section">
             <div class="settings__data_display">
-              <input type="radio" class="settings__checkbox" name="settings" id="minimal">  <label for="">Minimal</label><br>
-              <input type="radio" class="settings__checkbox" name="settings" id="normal">  <label for="">Normal</label><br>
-              <input type="radio" class="settings__checkbox" name="settings" id="detailed">  <label for="">Detailed</label><br>
+              <div class="misguided-elements"><input type="radio" class="settings__checkbox" name="settings" id="minimal">  <label for="minimal">Minimal</label></div>
+              <div class="misguided-elements"><input type="radio" class="settings__checkbox" name="settings" id="normal">  <label for="normal">Normal</label></div>
+              <div class="misguided-elements"><input type="radio" class="settings__checkbox" name="settings" id="detailed">  <label for="detailed">Detailed</label></div>
             </div>
             
-            <div id="settings__use_unsplash">
-                <input type="checkbox" name="use_unsplash">
-                <label>Use image from unsplash</label>
+            <div id="settings__use_unsplash" class="misguided-elements">
+                <input type="checkbox" name="use_unsplash" id="use_unsplash">
+                <label for="use_unsplash">Use image from unsplash</label>
             </div>
             
+<!--
             <div id="settings__credits">
-                Credits
+                CREDITS
                 <ul id="credits">
                     <li>Realtime data provided by <a href="https://cryptoCompare.com" target="_blank">CryptoCompare</a></li>
                     <li>Realtime currency conversion made possible by <a href="https://apilayer.net" target="_blank">Apilayer</a></li>
@@ -101,6 +101,7 @@
                 </ul>
             
             </div>
+-->
             
         </div>
 
