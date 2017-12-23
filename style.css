@@ -185,7 +185,7 @@ h5 i {
 	z-index:1;
 	background-size:cover;
 	background-position:center;
-	background-repeat:repeat;
+	background-repeat: no-repeat;
 }
 
 .bg__overlay{

@@ -1,10 +1,11 @@
-cg = 0;
+
 document.addEventListener("DOMContentLoaded", async function(event) {
+    
 	// get a handle to the settings button
 	const tg_Settings = $("#tg-settings");
 
 	// display faculty
-	let extraData = [...$("h5")];
+	let extraData = Array.from($("h5"));
 	let changePer24 = extraData.filter((el, i) => (i % 5 == 0));
 
 	// get previous state set by previous child of cryptoManiac
@@ -57,6 +58,13 @@ document.addEventListener("DOMContentLoaded", async function(event) {
    	}
 
    	localStorage.setItem("state", "detailed")
+  }
+  
+  const fixBgPositioning = () => {
+      // after you toggle the background image on or off, the positioning changes
+      // this quick script fixes the error created
+      $(".bg__image").css("background-size", "cover");
+      $(".bg__image").css("background-position", "center")
   }
 
   	// asssemble data object from recieved string
@@ -136,6 +144,7 @@ document.addEventListener("DOMContentLoaded", async function(event) {
         $authorImage.setAttribute('src', data.user.profile_image.large);
         $authorName.setAttribute('href', data.user.links.html + UTMParams);
         $authorName.innerHTML = data.user.name;
+        fixBgPositioning()
 
         // Build an object to store in local storage
         var backgroundImageData = {
@@ -157,6 +166,8 @@ document.addEventListener("DOMContentLoaded", async function(event) {
         $authorImage.setAttribute('src', completeObj.user_profile_image_url);
         $authorName.setAttribute('href', completeObj.user_profile_url + UTMParams);
         $authorName.innerHTML = completeObj.user_name;
+        
+        fixBgPositioning()
     }
   }
 
@@ -263,6 +274,23 @@ document.addEventListener("DOMContentLoaded", async function(event) {
   			$(".bg__image").css("background", "black")
   		}
   	}
+  })
+
+
+  // Open Cryptex when the extension icon is clicked
+  chrome.browserAction.onClicked.addListener(function (activeTab) {
+    if (activeTab.title !== "CryptoManiac") {
+      chrome.tabs.create({ url: chrome.runtime.getURL("popup.html")});
+    } else {
+      chrome.tabs.query({}, (tabs) => {
+        tabs.forEach((tab) => {
+          if (tab.title === "cryptoManiac") {
+            console.log(tab.id, tab.index);
+            chrome.tabs.update(tab.id, { highlighted: false });
+          }
+        });
+      });
+    }
   })
 
 
