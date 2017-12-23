@@ -4,8 +4,10 @@ Growing at unreal rates per second, so I built this extension keeps track of the
 
 # Installation :sparkles:
  ### How to install this extension in your browser.
- 	1. Clone the repo.
- 	2. Open chrome.
- 	3. type chrome://extensions/ in the url bar.
- 	4. Locate and click on "Load unpacked extension".
- 	5. Locate and select the clone repo.
+ 	1. Clone the repo/download this repository (look for a green download button)
+  2. Extract the zip file you just downloaded.
+ 	3. Open chrome browser on you pc
+ 	4. Type chrome://extensions/ in the url bar.
+ 	5. Locate and click on "Load unpacked extension".
+ 	6. Locate the folder created from the extraction in 2 and click on Okay.
+  7. Voila !!!
