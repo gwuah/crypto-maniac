@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", async function(event) {
-    
+
 	// get a handle to the settings button
 	const tg_Settings = $("#tg-settings");
 
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async function(event) {
 		// remove everything and then display our guys
 		// thats why we called minimal first
  		minimal()
- 		for (const data of changePer24) { 
+ 		for (const data of changePer24) {
  			data.style.display = "block" ;
  		}
 
@@ -45,21 +45,21 @@ document.addEventListener("DOMContentLoaded", async function(event) {
 	}
 
 	const minimal = () => {
-  	for (const data of extraData) { 
-  		data.style.display = "none" ; 
+  	for (const data of extraData) {
+  		data.style.display = "none" ;
   	}
 
   	localStorage.setItem("state", "minimal")
   }
 
   const detailed = () => {
-  	for (const data of extraData) { 
-  		data.style.display = "block" 
+  	for (const data of extraData) {
+  		data.style.display = "block"
    	}
 
    	localStorage.setItem("state", "detailed")
   }
-  
+
   const fixBgPositioning = () => {
       // after you toggle the background image on or off, the positioning changes
       // this quick script fixes the error created
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async function(event) {
 	const getRandomUnsplashPhoto = async () => {
     const CLIENT_ID = '723bbb8a1193556cc9ea8798b2b4e6b9b401c177129bbe0319b48460f86fee4e';
     const _unsplashURL = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}&query=nature`;
-    
+
     const data = await fetch(_unsplashURL)
     return await data.json()
   };
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async function(event) {
         // Set the stringified localStorage obj
         localStorage.setItem('unsplash_data_obj', JSON.stringify(backgroundImageData));
         localStorage.setItem('unsplash_data_time_expiry', addTwoHours);
-        
+
     } else {
         var completeObj = JSON.parse(bgImage);
 
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", async function(event) {
         $authorImage.setAttribute('src', completeObj.user_profile_image_url);
         $authorName.setAttribute('href', completeObj.user_profile_url + UTMParams);
         $authorName.innerHTML = completeObj.user_name;
-        
+
         fixBgPositioning()
     }
   }
@@ -220,14 +220,14 @@ document.addEventListener("DOMContentLoaded", async function(event) {
 	}
 
 
-	// request for specific data from server 
+	// request for specific data from server
 	socket.emit('SubAdd', { subs: subscription });
 	socket.on("m", function(message) {
 		// console.log(message)
 		const messageType = message.substring(0, message.indexOf("~"));
 		if (messageType == CCC.STATIC.TYPE.CURRENTAGG) {
 			res = CCC.CURRENT.unpack(message);
-			
+
 			dataUnpack(res);
 		}
 	});
@@ -262,7 +262,7 @@ document.addEventListener("DOMContentLoaded", async function(event) {
   	} else if (e.target.name == "use_unsplash") {
   		console.log("i was clicked!")
   		var checked = e.target.checked;
-  		
+
   		// update settings in localStorage
   		localStorage.setItem('use_unsplash', checked)
 
@@ -275,6 +275,10 @@ document.addEventListener("DOMContentLoaded", async function(event) {
   		}
   	}
   })
+
+
+});
+
 
 
   // Open Cryptex when the extension icon is clicked
@@ -292,6 +296,3 @@ document.addEventListener("DOMContentLoaded", async function(event) {
       });
     }
   })
-
-
-});
